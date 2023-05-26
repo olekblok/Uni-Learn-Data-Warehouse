@@ -1,0 +1,168 @@
+--Compare the average grade of courses with the biggest/lowest number of hours
+WITH MEMBER [Measures].[AVG GRADE] AS  
+[Measures].[Grade - Fact Enrollment] / [Measures].[Fact Enrollment Count]
+SELECT NON EMPTY {[Dim Course].[Num Of Hours].&[106-120],[Dim Course].[Num Of Hours].&[15-30]} ON 1,
+[Measures].[AVG GRADE] ON 0 
+FROM [Uni Learn] 
+CELL PROPERTIES VALUE, 
+BACK_COLOR, 
+FORE_COLOR, 
+FORMATTED_VALUE, 
+FORMAT_STRING, 
+FONT_NAME, 
+FONT_SIZE, 
+FONT_FLAGS;
+
+
+--Show the grades from finished courses in shape to the months
+WITH MEMBER [Measures].[AVG Grade] AS  
+[Measures].[Grade - Fact Enrollment] / [Measures].[Fact Enrollment Count]
+SELECT NON EMPTY {[ID Finish Date].[Hierarchy].[Month] } ON 1,
+[Measures].[AVG Grade] ON 0
+FROM [Uni Learn]
+CELL PROPERTIES VALUE, 
+BACK_COLOR, 
+FORE_COLOR, 
+FORMATTED_VALUE, 
+FORMAT_STRING, 
+FONT_NAME, 
+FONT_SIZE, 
+FONT_FLAGS;
+
+--Find the average completion percentage for the courses with the biggest/lowest number of hours.
+WITH MEMBER [Measures].[AVG COMPLETION] AS 
+[Measures].[Completition Percentage - Fact Enrollment] / [Measures].[Fact Enrollment Count] 
+SELECT NON EMPTY {[Dim Course].[Num Of Hours].&[106-120],[Dim Course].[Num Of Hours].&[15-30]} ON 1,
+[Measures].[AVG COMPLETION] ON 0 
+FROM [Uni Learn] 
+CELL PROPERTIES VALUE, 
+BACK_COLOR, 
+FORE_COLOR, 
+FORMATTED_VALUE, 
+FORMAT_STRING, 
+FONT_NAME, 
+FONT_SIZE, 
+FONT_FLAGS;
+
+
+--Which faculty has the lowest/highest average grades
+--Lowest
+WITH MEMBER [Measures].[AVG GRADE] AS  
+[Measures].[Grade - Fact Enrollment] / [Measures].[Fact Enrollment Count]
+SELECT NON EMPTY{ [Measures].[AVG GRADE] }  ON 0 ,
+	BOTTOMCOUNT((NONEMPTY ([Dim Faculty].[Name].[Name])), 1, [Measures].[AVG GRADE]) ON 1
+FROM [Uni Learn]
+CELL PROPERTIES VALUE, 
+BACK_COLOR, 
+FORE_COLOR, 
+FORMATTED_VALUE, 
+FORMAT_STRING, 
+FONT_NAME, 
+FONT_SIZE, 
+FONT_FLAGS;
+
+--Highest
+WITH MEMBER [Measures].[AVG GRADE] AS  
+[Measures].[Grade - Fact Enrollment] / [Measures].[Fact Enrollment Count]
+SELECT { [Measures].[AVG GRADE] }  ON 0 ,
+	TOPCOUNT((NONEMPTY ([Dim Faculty].[Name].[Name])), 1, [Measures].[AVG GRADE]) ON 1
+FROM [Uni Learn]
+CELL PROPERTIES VALUE, 
+BACK_COLOR, 
+FORE_COLOR, 
+FORMATTED_VALUE, 
+FORMAT_STRING, 
+FONT_NAME, 
+FONT_SIZE, 
+FONT_FLAGS;
+
+--Find the number of hours of courses with the best average rating from the survey
+WITH MEMBER [Measures].[AVG TIME RATE] AS  
+[Measures].[Time Rate - Fact Enrollment] / [Measures].[Fact Enrollment Count]
+SELECT {[Measures].[AVG TIME RATE] } ON 0,
+	TOPCOUNT((NONEMPTY ([Dim Course].[Num Of Hours].[Num Of Hours])), 1, [Measures].[AVG TIME RATE]) ON 1
+FROM [Uni Learn]
+WHERE [Dim Survey].[Status].&[fulfilled]
+CELL PROPERTIES VALUE, 
+BACK_COLOR, 
+FORE_COLOR, 
+FORMATTED_VALUE, 
+FORMAT_STRING, 
+FONT_NAME, 
+FONT_SIZE, 
+FONT_FLAGS;
+
+--What was the number of hours for the courses with the highest hardness rate?
+WITH MEMBER [Measures].[AVG HARDNESS RATE] AS  
+[Measures].[Hardness Rate - Fact Enrollment] / [Measures].[Fact Enrollment Count]
+SELECT {[Measures].[AVG HARDNESS RATE] } ON 0,
+	TOPCOUNT((NONEMPTY ([Dim Course].[Num Of Hours].[Num Of Hours])), 1, [Measures].[AVG HARDNESS RATE]) ON 1
+FROM [Uni Learn]
+WHERE [Dim Survey].[Status].&[fulfilled]
+CELL PROPERTIES VALUE, 
+BACK_COLOR, 
+FORE_COLOR, 
+FORMATTED_VALUE, 
+FORMAT_STRING, 
+FONT_NAME, 
+FONT_SIZE, 
+FONT_FLAGS;
+
+--How the number of hours during courses are shaped in relation to average grade?
+WITH MEMBER [Measures].[AVG GRADE] AS  
+[Measures].[Grade - Fact Enrollment] / [Measures].[Fact Enrollment Count]
+SELECT NON EMPTY{ [Measures].[AVG GRADE] }  ON 0 ,
+	NONEMPTY([Dim Course].[Num Of Hours].[Num Of Hours]) ON 1
+FROM [Uni Learn]
+WHERE [Dim Survey].[Status].&[fulfilled]
+CELL PROPERTIES VALUE, 
+BACK_COLOR, 
+FORE_COLOR, 
+FORMATTED_VALUE, 
+FORMAT_STRING, 
+FONT_NAME, 
+FONT_SIZE, 
+FONT_FLAGS;
+
+--Which courses have the highest content rate level?
+WITH MEMBER [Measures].[AVG CONTENT RATE] AS  
+[Measures].[Content Rate - Fact Enrollment] / [Measures].[Fact Enrollment Count]
+SELECT {[Measures].[AVG CONTENT RATE] } ON 0,
+	TOPCOUNT((NONEMPTY ([Dim Course].[Name].[Name])), 3, [Measures].[AVG CONTENT RATE]) ON 1
+FROM [Uni Learn]
+WHERE [Dim Survey].[Status].&[fulfilled]
+CELL PROPERTIES VALUE, 
+BACK_COLOR, 
+FORE_COLOR, 
+FORMATTED_VALUE, 
+FORMAT_STRING, 
+FONT_NAME, 
+FONT_SIZE, 
+FONT_FLAGS;
+
+--Find tutors' names with the highest tutor level.
+WITH MEMBER [Measures].[AVG TUTOR RATE] AS  
+[Measures].[Toutor Rate - Fact Enrollment] / [Measures].[Fact Enrollment Count]
+SELECT {[Measures].[AVG TUTOR RATE] } ON 0,
+	TOPCOUNT((NONEMPTY ([Dim Tutor].[Last Name].[Last Name])), 3, [Measures].[AVG TUTOR RATE]) ON 1
+FROM [Uni Learn]
+WHERE [Dim Survey].[Status].&[fulfilled]
+CELL PROPERTIES VALUE, 
+BACK_COLOR, 
+FORE_COLOR, 
+FORMATTED_VALUE, 
+FORMAT_STRING, 
+FONT_NAME, 
+FONT_SIZE, 
+FONT_FLAGS;
+
+--Compare average grades from 2015 and 2016
+WITH MEMBER  [Measures].[AVG GRADE] AS  
+[Measures].[Grade - Fact Enrollment] / [Measures].[Fact Enrollment Count]
+MEMBER [PREV YEAR GRADE] AS (ParallelPeriod (
+[ID Start Date].[Hierarchy].[Year], 1,
+[ID Start Date].[Hierarchy].CurrentMember), [Measures].[AVG GRADE])
+SELECT [ID Start Date].[Hierarchy].[Year].[2016]
+ON ROWS,
+{[Measures].[AVG GRADE], [Prev YEAR GRADE]} ON COLUMNS
+FROM [Uni Learn];

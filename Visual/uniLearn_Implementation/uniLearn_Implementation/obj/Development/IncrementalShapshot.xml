@@ -1,0 +1,103 @@
+﻿<DeploymentSnapshot xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0">
+  <Target>
+    <Database>uniLearn_Implementation</Database>
+    <Server>localhost</Server>
+    <ConnectionString>Data Source=localhost;Timeout=0</ConnectionString>
+  </Target>
+  <Options>
+    <TransactionalDeployment>false</TransactionalDeployment>
+    <PartitionDeployment>DeployPartitions</PartitionDeployment>
+    <RoleDeployment>DeployRolesRetainMembers</RoleDeployment>
+    <ProcessingOption>DoNotProcess</ProcessingOption>
+    <OutputScript></OutputScript>
+    <ImpactAnalysisFile></ImpactAnalysisFile>
+    <ConfigurationSettingsDeployment>Deploy</ConfigurationSettingsDeployment>
+    <OptimizationSettingsDeployment>Deploy</OptimizationSettingsDeployment>
+    <WriteBackTableCreation>UseExisting</WriteBackTableCreation>
+  </Options>
+  <Snapshot>
+    <ObjectSnapshots>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.RelationalDataSource</Type>
+        <TimeStamp>gRquGSZVZTM5AQprf482YAySjK4=18.05.2023 17:19:5918.05.2023 17:19:59</TimeStamp>
+        <ID>
+          <String>Uni Learn</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.DataSourceView</Type>
+        <TimeStamp>7jL9yDXKAWnhm1fGSY5GzPvfatU=18.05.2023 17:20:0718.05.2023 17:20:07</TimeStamp>
+        <ID>
+          <String>Uni Learn</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>/HuIY7Y1FIBK2nDMpfk6voOAB+U=18.05.2023 19:33:1518.05.2023 17:20:23</TimeStamp>
+        <ID>
+          <String>Dim Tutor</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>ycbc1a/CViYwY+Wl+9I9vN+zVb0=18.05.2023 17:21:4818.05.2023 17:20:23</TimeStamp>
+        <ID>
+          <String>Dim Course</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>TQO7YjfMKTSjpUo9oaEyp759jO0=18.05.2023 17:21:4818.05.2023 17:20:23</TimeStamp>
+        <ID>
+          <String>Dim Date</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>3lD8BBLCMa3WR7qt18KWJ4cnWMo=18.05.2023 17:21:4818.05.2023 17:20:23</TimeStamp>
+        <ID>
+          <String>Dim Survey</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>rTACsR3uCMWSLGUKutQPjRrfxMU=18.05.2023 17:20:2318.05.2023 17:20:23</TimeStamp>
+        <ID>
+          <String>Dim Time</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>WmvWeosAwMSsJuJr8u6vrHVmuNM=18.05.2023 17:20:2318.05.2023 17:20:23</TimeStamp>
+        <ID>
+          <String>Dim Student</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>OSjISuIo7mxI9j9XRNA5cnlD3Hs=18.05.2023 17:21:4818.05.2023 17:21:47</TimeStamp>
+        <ID>
+          <String>Dim Faculty</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Cube</Type>
+        <TimeStamp>hkHeWacxa8WxGZFCmbqhCZMXM0E=24.05.2023 22:47:2618.05.2023 17:20:23+AttOdKMPAmJj2EBVehPy0NcN6g=18.05.2023 17:28:1318.05.2023 17:20:23</TimeStamp>
+        <ID>
+          <String>Uni Learn</String>
+        </ID>
+      </ObjectSnapshot>
+    </ObjectSnapshots>
+    <DatabaseSnapshot>
+      <Type>Microsoft.AnalysisServices.Database</Type>
+      <TimeStamp>e/4qUDCatKa5PDVpak2aY9i77pA=18.05.2023 17:19:0718.05.2023 17:19:07</TimeStamp>
+      <ID>
+        <String>uniLearn_Implementation</String>
+      </ID>
+    </DatabaseSnapshot>
+    <Granularity>Coarse</Granularity>
+  </Snapshot>
+  <AssemblyLocations />
+  <ProcessingComplete>true</ProcessingComplete>
+  <LastDeployed>2023-05-25T12:47:28.496667Z</LastDeployed>
+</DeploymentSnapshot>

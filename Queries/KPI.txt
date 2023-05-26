@@ -1,0 +1,29 @@
+--KPI
+BetterGrade
+--Value Expression
+[Measures].[Grade - Fact Enrollment] / [Measures].[Fact Enrollment Count]
+--Goal Expression
+( KPIValue( "BetterGrade" ), ParallelPeriod (
+[ID Start Date].[Hierarchy].[Year], 1,
+[ID Start Date].[Hierarchy].CurrentMember ) ) * 1.08
+--Status Expression
+IIf(KPIVALUE(“BetterGrade”) > KPIGoal(“BetterGrade”), 1, -1)
+--Trend Expression
+IIf ( KPIValue( "BetterGrade" ) > ( KPIValue( "BetterGrade" ), ParallelPeriod (
+[ID Start Date].[Hierarchy].[Year], 1,
+[ID Start Date].[Hierarchy].CurrentMember ) ), 1, -1)
+---------------------------------------------------------------------------------------
+--KPI
+BetterCompletion
+--Value Expression
+[Measures].[Completition Percentage - Fact Enrollment] / [Measures].[Fact Enrollment Count] 
+--Goal Expression
+( KPIValue( "BetterCompletion" ), ParallelPeriod (
+[ID Start Date].[Hierarchy].[Year], 1,
+[ID Start Date].[Hierarchy].CurrentMember ) ) * 1.05
+--Status Expression
+IIf (KPIVALUE( "BetterCompletion" ) > KPIGoal("BetterCompletion"), 1, -1)
+--Trend Expression
+IIf ( KPIValue( "BetterCompletion" ) > ( KPIValue( "BetterCompletion" ), ParallelPeriod (
+[ID Start Date].[Hierarchy].[Year], 1,
+[ID Start Date].[Hierarchy].CurrentMember ) ), 1, -1)

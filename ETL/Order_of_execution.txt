@@ -1,0 +1,15 @@
+order of execution
+
+-- initial
+load date +
+load time +
+load survey +
+load unknown  +
+
+-- data 
+load faculty +
+load students +
+load tutors +
+load courses + 
+load teachings +
+load enrollments
